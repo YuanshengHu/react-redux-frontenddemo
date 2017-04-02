@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/jquery.dataTables.min.css" rel="stylesheet">
+</head>
+<body>
+<div id="header">
+
+</div>
+<div id="upchart">
+    <div style="height: 400px; width: 50%; float: left" id="area1">
+        <div style="height: 87%; width: 75%; margin: 0 auto; padding-top: 12%">
+            <div class="panel panel-default" style="height: 100%; width: 100%">
+                <div class="panel-heading" style="text-align: center; height: 20%">
+                    <p style="font-size: x-large;">实时能源渗透率</p>
+                </div>
+                <div class="panel-body" style="text-align: center">
+                    <div id="left-up-chart"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="height: 400px; width: 50%; float: right" id="area2">
+        <div style="height: 87%; width: 75%; margin: 0 auto; padding-top: 12%">
+            <div class="panel panel-default" style="height: 100%; width: 100%">
+                <div class="panel-heading" style="text-align: center; height: 20%">
+                    <p style="font-size: x-large">当日出力累计能效</p>
+                </div>
+                <div class="panel-body" style="text-align: center; height: 80%">
+                    <div id="right-up-chart1" style="float: left; height: 100%; width: 40%">
+                        <table style="height: 100%">
+                            <tr>
+                                <td style="width: 40%">碳排减量：</td>
+                                <td><input type="text" value="" style="width: 80%"/>kg</td>
+                            </tr>
+                            <tr>
+                                <td style="width: 40%">碳排减率：</td>
+                                <td><input type="text" value="" style="width: 80%"/></td>
+                            </tr>
+                            <tr>
+                                <td style="width: 40%">新能源消纳：</td>
+                                <td><input type="text" value="" style="width: 80%"/></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="right-up-chart21" style="float: left; height: 100%; width: 30%"></div>
+                    <div id="right-up-chart22" style="float: left; height: 100%; width: 30%"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="downchart" style="clear: both">
+    <div style="height: 400px; width: 50%; float: left" id="area3">
+        <div style="height: 87%; width: 75%; margin: 0 auto; padding-top: 12%">
+            <div class="panel panel-default" style="height: 100%; width: 100%">
+                <div class="panel-heading" style="text-align: center; height: 20%">
+                    <p style="font-size: x-large">当前累计能源结构</p>
+                </div>
+                <div class="panel-body" style="text-align: center">
+                    <div id="left-down-chart"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="height: 400px; width: 50%; float: right" id="area4">
+        <div style="height: 87%; width: 75%; margin: 0 auto; padding-top: 12%">
+            <div class="panel panel-default" style="height: 100%; width: 100%">
+                <div class="panel-heading" style="text-align: center; height: 20%">
+                    <p style="font-size: x-large">预计能效</p>
+                </div>
+                <div class="panel-body" style="text-align: center; height: 80%">
+                    <div id="right-down-chart1" style="float: left; height: 100%; width: 40%">
+                        <table style="height: 100%">
+                            <tr>
+                                <td style="width: 40%">碳排减量：</td>
+                                <td><input type="text" value="" style="width: 80%"/>kg</td>
+                            </tr>
+                            <tr>
+                                <td style="width: 40%">碳排减率：</td>
+                                <td><input type="text" value="" style="width: 80%"/></td>
+                            </tr>
+                            <tr>
+                                <td style="width: 40%">新能源消纳：</td>
+                                <td><input type="text" value="" style="width: 80%"/></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="right-down-chart21" style="float: left; height: 100%; width: 30%"></div>
+                    <div id="right-down-chart22" style="float: left; height: 100%; width: 30%"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/jquery.dataTables.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/highcharts.js"></script>
+<script src="../js/react.js"></script>
+<script src="../js/react-dom.min.js"></script>
+<script src="../js/babel.min.js"></script>
+<script type="text/babel" src="../js/app/app.page.energy_resume_feedback.js"></script>
+</html>
