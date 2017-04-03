@@ -19,7 +19,7 @@ var LoadForecastCurve = React.createClass({
 var CustomerBuyPredict = React.createClass({
     render: function () {
         return (
-            <table id="example" class="display" cellspacing="0" width="100%">
+            <table id="example" className="display" cellSpacing="0" width="100%">
                 <thead>
                 <tr>
                     <th>用户名</th>
@@ -33,7 +33,7 @@ var CustomerBuyPredict = React.createClass({
                     <th>用户名</th>
                     <th>分布式光伏</th>
                     <th>小水电</th>
-                    <th>分布式风电</th>th>
+                    <th>分布式风电</th>
                 </tr>
                 </tfoot>
                 <tbody>
