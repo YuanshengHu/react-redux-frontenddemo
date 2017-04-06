@@ -3,40 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <title></title>
+    <style type="text/css">
+        table.mytable tr {border-bottom: 1px solid #444}
+    </style>
     <link href="../css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/jquery.dataTables.min.css" rel="stylesheet">
 </head>
 <body>
+<nav class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">分布式能源综合系统导航</a>
+        </div>
+        <div>
+            <ul class="nav navbar-nav">
+                <li><a href="./load_plan_buy.html">公布负荷认购信息</a></li>
+                <li><a href="./bid_win_pub.html">中标电量公示</a></li>
+                <li><a href="./generator_winner_detail.html">中标电量细节</a></li>
+                <li><a href="./energy_resume_feedback.html">能源消耗反馈</a></li>
+                <li class="active"><a href="#">认购缴清信息</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
 <div id="header"></div>
 <div id="upchart" style="float: left; width: 35%; height: 750px; padding-top: 5%">
     <div class="panel panel-default" style="margin: 0 auto; width:90%; height: 90%">
         <div class="panel-body" style="text-align: center">
             <div data-spy="scroll" data-target="#navbar-example" data-offset="0"
-                 style="height:400px;overflow:auto; position: relative; background-color: #a6e1ec">
-                <table style="width: 100%" border="1">
-                    <tr><td>用户10001</td></tr>
-                    <tr style="background-color: #d43f3a"><td>用户10002</td></tr>
-                    <tr><td>用户10003</td></tr>
-                    <tr><td>用户10004</td></tr>
-                    <tr><td>用户10005</td></tr>
-                    <tr><td>用户10006</td></tr>
-                    <tr><td>用户10007</td></tr>
-                    <tr><td>用户10008</td></tr>
-                    <tr><td>用户10009</td></tr>
-                    <tr><td>用户10010</td></tr>
-                    <tr><td>用户10011</td></tr>
-                    <tr><td>用户10012</td></tr>
-                    <tr><td>用户10013</td></tr>
-                    <tr><td>用户10014</td></tr>
-                    <tr><td>用户10015</td></tr>
-                    <tr><td>用户10016</td></tr>
-                    <tr><td>用户10017</td></tr>
-                    <tr><td>用户10018</td></tr>
-                    <tr><td>用户10019</td></tr>
-                    <tr><td>用户10020</td></tr>
-                    <tr><td>用户10021</td></tr>
-                    <tr><td>用户10022</td></tr>
-                </table>
+                 style="height:400px;overflow:auto; position: relative; background-color: #a6e1ec" id="tablediv">
             </div>
             <div style="width: 100%; text-align: center; padding-top: 5%">
                 <p>当前用户</p>
@@ -59,5 +54,6 @@
 <script src="../js/react.js"></script>
 <script src="../js/react-dom.min.js"></script>
 <script src="../js/babel.min.js"></script>
+<script type="text/babel" src="../js/app/Highchart-react.js"></script>
 <script type="text/babel" src="../js/app/app.page.buy_and_pay.js"></script>
 </html>
