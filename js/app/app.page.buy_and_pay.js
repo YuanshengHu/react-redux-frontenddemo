@@ -1,3 +1,39 @@
+var data_page = {
+    "user":
+        [
+            {"id":"用户10001"},
+            {"id":"用户10002"},
+            {"id":"用户10003"},
+            {"id":"用户10004"},
+            {"id":"用户10005"},
+            {"id":"用户10006"},
+            {"id":"用户10007"},
+            {"id":"用户10008"},
+            {"id":"用户10009"},
+            {"id":"用户10010"},
+            {"id":"用户10011"},
+            {"id":"用户10012"},
+            {"id":"用户10013"},
+            {"id":"用户10014"},
+            {"id":"用户10015"},
+            {"id":"用户10016"},
+            {"id":"用户10017"},
+            {"id":"用户10018"},
+            {"id":"用户10019"},
+            {"id":"用户10020"},
+            {"id":"用户10021"},
+            {"id":"用户10022"},
+            {"id":"用户10023"},
+            {"id":"用户10024"},
+        ],
+    "userdetail":
+    {
+        "用户10001":{"sum":"100","php":0.3,"ppv":0.3,"pwp":0.3,"ahp":0.3,"apv":0.3,"awp":0.3},
+        "用户10002":{"sum":"100","php":0.3,"ppv":0.3,"pwp":0.3,"ahp":0.3,"apv":0.3,"awp":0.3},
+        "用户10003":{"sum":"100","php":0.3,"ppv":0.3,"pwp":0.3,"ahp":0.3,"apv":0.3,"awp":0.3}
+    }
+}
+
 var Header = React.createClass({
     render: function () {
         return (
@@ -117,46 +153,53 @@ var options2 = {
 
 ReactDOM.render(React.createElement(MyHighChart, {container: 'right-chart1', options: options1 }), document.getElementById('right-chart1'));
 ReactDOM.render(React.createElement(MyHighChart, {container: 'right-chart2', options: options2 }), document.getElementById('right-chart2'));
+
 var Userlist = React.createClass({
+    getInitialState: function() {
+        return {
+            item:"用户10001"
+        };
+    },
     handleItemClicked: function(event) {
-        //var tableRowNode = event.target;
-        //console.log(tableRowNode.innerHTML);
-        //var tableDataNode = tableRowNode.getElementsByTagName("td");
-        //var id = tableDataNode.innerHTML;
-        console.log(event.target.innerHTML);
+        this.setState({item:event.target.innerHTML});
     },
     render: function() {
         return (
             <table style={{width: '100%', border:"1px solid #444"}} className = 'mytable'>
                 <tbody>
-                <tr><td>用户10001</td></tr>
-                <tr style={{backgroundColor: '#d43f3a'}} onClick={this.handleItemClicked}><td>用户10002</td></tr>
-                <tr style={{backgroundColor: '#d43f3a'}} onClick={this.handleItemClicked}><td>用户10003</td></tr>
-                <tr><td>用户10004</td></tr>
-                <tr><td>用户10005</td></tr>
-                <tr><td>用户10006</td></tr>
-                <tr><td>用户10007</td></tr>
-                <tr><td>用户10008</td></tr>
-                <tr><td>用户10009</td></tr>
-                <tr><td>用户10010</td></tr>
-                <tr><td>用户10011</td></tr>
-                <tr><td>用户10012</td></tr>
-                <tr><td>用户10013</td></tr>
-                <tr><td>用户10014</td></tr>
-                <tr><td>用户10015</td></tr>
-                <tr><td>用户10016</td></tr>
-                <tr><td>用户10017</td></tr>
-                <tr><td>用户10018</td></tr>
-                <tr><td>用户10019</td></tr>
-                <tr><td>用户10020</td></tr>
-                <tr><td>用户10021</td></tr>
-                <tr><td>用户10022</td></tr>
+                {
+                    this.props.data_detail.user.map((each,index) =>
+                        <tr
+                            key={index}
+                            style={(each.id===this.state.item)?{backgroundColor: '#d43f3a',cursor:"default"}:{cursor:"default"}}
+                            onClick={this.handleItemClicked}
+                            ><td>{each.id}</td></tr>)
+                }
                 </tbody>
             </table>
         )
     }
 })
+
 ReactDOM.render(
-    <Userlist/>,
+    <Userlist data_detail={data_page}/>,
     document.getElementById('tablediv')
+)
+
+var UserPanel = React.createClass({
+    render: function() {
+        return (
+            <div>
+                <p>当前用户</p>
+                <p style={{fontSize: "xx-large"}}>用户10002</p>
+                <p>用户总负荷量</p>
+                <p style={{fontSize: "xx-large"}}>100kw</p>
+            </div>
+        )
+    }
+})
+
+ReactDOM.render(
+    <UserPanel/>,
+    document.getElementById("paneldiv")
 )
