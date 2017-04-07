@@ -99,6 +99,7 @@ var options1 = {
         data: [0.4, 0.3]
     }]
 }
+
 var options2 = {
     chart: {
         type: 'column'
@@ -150,10 +151,9 @@ var options2 = {
         }
     }]
 }
-
-ReactDOM.render(React.createElement(MyHighChart, {container: 'right-chart1', options: options1 }), document.getElementById('right-chart1'));
-ReactDOM.render(React.createElement(MyHighChart, {container: 'right-chart2', options: options2 }), document.getElementById('right-chart2'));
-
+/*
+    this part is the components of the app
+ */
 var Userlist = React.createClass({
     getInitialState: function() {
         return {
@@ -181,11 +181,6 @@ var Userlist = React.createClass({
     }
 })
 
-ReactDOM.render(
-    <Userlist data_detail={data_page}/>,
-    document.getElementById('tablediv')
-)
-
 var UserPanel = React.createClass({
     render: function() {
         return (
@@ -198,7 +193,44 @@ var UserPanel = React.createClass({
         )
     }
 })
+/*
+    this part is the action of the redux
+ */
+const CHANGE_USER = 'CHANGE_USER';
+function changeUser(id) {
+    return {type:CHANGE_USER, id};
+}
+/*
+    this part is the reducer of the redux
+ */
+const initialState = {
+    currentId:"用户10001",
+    currentInformation:data_page.userdetail["用户10001"]
 
+}
+function userId(state = initialState, action = []) {
+    switch (action.type) {
+        case CHANGE_USER:
+            return Object.assign({},state,{
+                currentId:action.id,
+                currentInformation:data_page.userdetail[action.id]
+            })
+        default :
+            return state
+    }
+}
+let store = Redux.createStore(userId);
+/*
+    this part is the render function of the app
+ */
+ReactDOM.render(React.createElement(MyHighChart, {container: 'right-chart1', options: options1 }), document.getElementById('right-chart1'));
+ReactDOM.render(React.createElement(MyHighChart, {container: 'right-chart2', options: options2 }), document.getElementById('right-chart2'));
+ReactDOM.render(
+    <ReactRedux.Provider store={store}>
+    <Userlist data_detail={data_page}/>
+    </ReactRedux.Provider>,
+    document.getElementById('tablediv')
+)
 ReactDOM.render(
     <UserPanel/>,
     document.getElementById("paneldiv")
