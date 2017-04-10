@@ -1,3 +1,14 @@
+var data_page = {
+    "all":[300.0012383,272.2191212,229.8264655,224.5144273,221.2035357,234.4392191,215.6022199,253.6722093,257.5706724,281.1235683,366.7407886,362.6267218,246.714386,174.9255816,295.220815,336.6571929,449.150355,477.3003489,437.9178441,351.5569585,295.5747874,585.5270614,584.5978368,282.4855321],
+    "curve":{
+        "LD1":[104.0012383,272.2191212,229.8264655,224.5144273,221.2035357,234.4392191,215.6022199,253.6722093,257.5706724,281.1235683,366.7407886,362.6267218,246.714386,174.9255816,295.220815,336.6571929,449.150355,477.3003489,437.9178441,351.5569585,295.5747874,585.5270614,584.5978368,282.4855321],
+        "LD2":[204.0012383,272.2191212,229.8264655,224.5144273,221.2035357,234.4392191,215.6022199,253.6722093,257.5706724,281.1235683,366.7407886,362.6267218,246.714386,174.9255816,295.220815,336.6571929,449.150355,477.3003489,437.9178441,351.5569585,295.5747874,585.5270614,584.5978368,282.4855321]
+    },
+    "table":[
+        {"id":"LD1", "pt":"32", "hp":"34", "wp":"34"},
+        {"id":"LD2", "pt":"31", "hp":"35", "wp":"34"}
+    ]
+}
 var Header = React.createClass({
     render: function () {
         return (
@@ -8,15 +19,10 @@ var Header = React.createClass({
     }
 });
 
-var LoadForecastCurve = React.createClass({
-    render: function () {
-        return (
-            <div id="LoadForecastCurve" style={{width: '80%' , height: '400px'}}></div>
-        );
-    }
-})
-
 var CustomerBuyPredict = React.createClass({
+    handleClick: function(item){
+        this.props.dispatch(changCurve(item));
+    },
     render: function () {
         return (
             <table id="example" className="display" cellSpacing="0" width="100%">
@@ -26,6 +32,7 @@ var CustomerBuyPredict = React.createClass({
                     <th>分布式光伏</th>
                     <th>小水电</th>
                     <th>分布式风电</th>
+                    <th>曲线</th>
                 </tr>
                 </thead>
                 <tfoot>
@@ -34,61 +41,37 @@ var CustomerBuyPredict = React.createClass({
                     <th>分布式光伏</th>
                     <th>小水电</th>
                     <th>分布式风电</th>
+                    <th>曲线</th>
                 </tr>
                 </tfoot>
                 <tbody>
-                <tr>
-                    <td>LD1</td>
-                    <td>15%</td>
-                    <td>35%</td>
-                    <td>50%</td>
-                </tr>
-                <tr>
-                    <td>LD2</td>
-                    <td>5%</td>
-                    <td>30%</td>
-                    <td>65%</td>
-                </tr>
-                <tr>
-                    <td>LD3</td>
-                    <td>10%</td>
-                    <td>20%</td>
-                    <td>70%</td>
-                </tr>
-                <tr>
-                    <td>LD4</td>
-                    <td>10%</td>
-                    <td>20%</td>
-                    <td>70%</td>
-                </tr>
-                <tr>
-                    <td>LD5</td>
-                    <td>30%</td>
-                    <td>25%</td>
-                    <td>45%</td>
-                </tr>
+                {
+                    this.props.tablelist.map((each,index) =>
+                            <tr key={index}>
+                                <td>{each.id}</td>
+                                <td>{each.pt}%</td>
+                                <td>{each.hp}%</td>
+                                <td>{each.wp}%</td>
+                                <td><button type="button" className="btn btn-success" onClick={this.handleClick.bind(this,each.id)}>展示</button></td>
+                            </tr>
+                    )
+                }
                 </tbody>
             </table>
         );
     }
 })
-
-ReactDOM.render(
-    <Header/>,
-    document.getElementById("header")
-);
-
-ReactDOM.render(
-    <LoadForecastCurve/>,
-    document.getElementById("upchart")
-);
-
-ReactDOM.render(
-    <CustomerBuyPredict/>,
-    document.getElementById("downchart")
-);
-
-var chart = new Highcharts.Chart('LoadForecastCurve', {
+function select(state){
+    return {
+        item:state.currentCurve
+    }
+}
+CustomerBuyPredict = ReactRedux.connect()(CustomerBuyPredict);
+MyHighChart = ReactRedux.connect(select)(MyHighChart);
+function changCurve1(pre,mod){
+    pre.series[0].data = mod;
+}
+var chartOptions = {
     title: {
         text: '全网全天预测负荷量曲线',
         x: -20
@@ -119,6 +102,51 @@ var chart = new Highcharts.Chart('LoadForecastCurve', {
         name: '总区域负荷',
         data: [304.0012383,272.2191212,229.8264655,224.5144273,221.2035357,234.4392191,215.6022199,253.6722093,257.5706724,281.1235683,366.7407886,362.6267218,246.714386,174.9255816,295.220815,336.6571929,449.150355,477.3003489,437.9178441,351.5569585,295.5747874,585.5270614,584.5978368,282.4855321]
     }]
-});
+}
+/*
+ this part is the action of the redux
+ */
+const CHANGE_CURVE = 'CHANGE_CURVE';
+function changCurve(id) {
+    return {type:CHANGE_CURVE, id};
+}
+/*
+ this part is the reducer of the redux
+ */
+const initialState = {
+    currentId:"all",
+    currentCurve:data_page.all
+}
+function reduceCurve(state = initialState, action = []) {
+    switch (action.type){
+        case CHANGE_CURVE:
+            return Object.assign({},state,{
+                currentId:action.id,
+                currentCurve:data_page.curve[action.id]
+            })
+        default :
+            return state
+    }
+}
+let store = Redux.createStore(reduceCurve);
+/*
+ this part is the render function of the app
+ */
+ReactDOM.render(
+    <Header/>,
+    document.getElementById("header")
+);
 
+ReactDOM.render(
+    <ReactRedux.Provider store={store}>
+    <CustomerBuyPredict tablelist={data_page.table}/>
+    </ReactRedux.Provider>,
+    document.getElementById("downchart")
+);
+ReactDOM.render(
+    <ReactRedux.Provider store={store}>
+    <MyHighChart container= 'LoadForecastCurve' options= {chartOptions} change={changCurve1}/>
+    </ReactRedux.Provider>,
+    document.getElementById('LoadForecastCurve')
+)
 var table = $('#example').DataTable();

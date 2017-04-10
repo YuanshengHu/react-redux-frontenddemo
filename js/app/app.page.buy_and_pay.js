@@ -4,33 +4,12 @@ var data_page = {
             {"id":"用户10001"},
             {"id":"用户10002"},
             {"id":"用户10003"},
-            {"id":"用户10004"},
-            {"id":"用户10005"},
-            {"id":"用户10006"},
-            {"id":"用户10007"},
-            {"id":"用户10008"},
-            {"id":"用户10009"},
-            {"id":"用户10010"},
-            {"id":"用户10011"},
-            {"id":"用户10012"},
-            {"id":"用户10013"},
-            {"id":"用户10014"},
-            {"id":"用户10015"},
-            {"id":"用户10016"},
-            {"id":"用户10017"},
-            {"id":"用户10018"},
-            {"id":"用户10019"},
-            {"id":"用户10020"},
-            {"id":"用户10021"},
-            {"id":"用户10022"},
-            {"id":"用户10023"},
-            {"id":"用户10024"},
         ],
     "userdetail":
     {
-        "用户10001":{"sum":"100","php":0.3,"ppv":0.3,"pwp":0.3,"ahp":0.3,"apv":0.3,"awp":0.3},
-        "用户10002":{"sum":"100","php":0.3,"ppv":0.3,"pwp":0.3,"ahp":0.3,"apv":0.3,"awp":0.3},
-        "用户10003":{"sum":"100","php":0.3,"ppv":0.3,"pwp":0.3,"ahp":0.3,"apv":0.3,"awp":0.3}
+        "用户10001":{"sum":"100","php":0.3,"ppv":0.3,"pwp":0.3,"ahp":0.3,"apv":0.3,"awp":0.3,"x1":53,"x2":59,"x3":30,"x4":44},
+        "用户10002":{"sum":"101","php":0.3,"ppv":0.1,"pwp":0.3,"ahp":0.3,"apv":0.1,"awp":0.3,"x1":30,"x2":59,"x3":30,"x4":44},
+        "用户10003":{"sum":"102","php":0.4,"ppv":0.3,"pwp":0.3,"ahp":0.4,"apv":0.2,"awp":0.3,"x1":53,"x2":59,"x3":30,"x4":20}
     }
 }
 
@@ -99,6 +78,21 @@ var options1 = {
         data: [0.4, 0.3]
     }]
 }
+function changeFunction1(pre,mod){
+    pre.series = [{
+        name: '风电',
+        data: [mod.pwp, mod.awp]
+    }, {
+        name: '光伏',
+        data: [mod.ppv, mod.apv]
+    }, {
+        name: '水电',
+        data: [mod.php, mod.ahp]
+    }, {
+        name: '不可再生',
+        data: [1-mod.pwp-mod.ppv-mod.php+0.00001, 1-mod.awp-mod.apv-mod.ahp+0.00001]
+    }]
+}
 
 var options2 = {
     chart: {
@@ -151,6 +145,14 @@ var options2 = {
         }
     }]
 }
+function changeFunction2(pre,mod){
+    pre.series[0].data= [
+        ['水电', mod.x1],
+        ['光伏', mod.x2],
+        ['不可再生', mod.x3],
+        ['风电', mod.x4]
+    ]
+}
 /*
     this part is the components of the app
  */
@@ -161,6 +163,7 @@ var Userlist = React.createClass({
         };
     },
     handleItemClicked: function(event) {
+        this.props.dispatch(changeUser(event.target.innerHTML));
         this.setState({item:event.target.innerHTML});
     },
     render: function() {
@@ -181,18 +184,33 @@ var Userlist = React.createClass({
     }
 })
 
-var UserPanel = React.createClass({
-    render: function() {
+class UserPanel extends React.Component {
+    render() {
         return (
             <div>
                 <p>当前用户</p>
-                <p style={{fontSize: "xx-large"}}>用户10002</p>
+                <p style={{fontSize: "xx-large"}}>{this.props.currentId}</p>
                 <p>用户总负荷量</p>
-                <p style={{fontSize: "xx-large"}}>100kw</p>
+                <p style={{fontSize: "xx-large"}}>{this.props.currentInformation.sum}</p>
             </div>
         )
     }
-})
+}
+
+function select(state){
+    return {
+        currentId:state.currentId,
+        currentInformation:state.currentInformation
+    }
+}
+function select2(state){
+    return {
+        item:state.currentInformation
+    }
+}
+Userlist = ReactRedux.connect()(Userlist);
+UserPanel = ReactRedux.connect(select)(UserPanel);
+MyHighChart = ReactRedux.connect(select2)(MyHighChart);
 /*
     this part is the action of the redux
  */
@@ -223,8 +241,6 @@ let store = Redux.createStore(userId);
 /*
     this part is the render function of the app
  */
-ReactDOM.render(React.createElement(MyHighChart, {container: 'right-chart1', options: options1 }), document.getElementById('right-chart1'));
-ReactDOM.render(React.createElement(MyHighChart, {container: 'right-chart2', options: options2 }), document.getElementById('right-chart2'));
 ReactDOM.render(
     <ReactRedux.Provider store={store}>
     <Userlist data_detail={data_page}/>
@@ -232,6 +248,20 @@ ReactDOM.render(
     document.getElementById('tablediv')
 )
 ReactDOM.render(
-    <UserPanel/>,
+    <ReactRedux.Provider store={store}>
+    <UserPanel/>
+    </ReactRedux.Provider>,
     document.getElementById("paneldiv")
+)
+ReactDOM.render(
+    <ReactRedux.Provider store={store}>
+    <MyHighChart container= 'right-chart1' options= {options1} change={changeFunction1}/>
+    </ReactRedux.Provider>,
+    document.getElementById('right-chart1')
+)
+ReactDOM.render(
+    <ReactRedux.Provider store={store}>
+        <MyHighChart container= 'right-chart2' options= {options2} change={changeFunction2}/>
+    </ReactRedux.Provider>,
+    document.getElementById('right-chart2')
 )
