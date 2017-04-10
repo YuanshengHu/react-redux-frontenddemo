@@ -4,7 +4,7 @@
 var Header = React.createClass({
     render: function () {
         return (
-            <div className="header-div" style={{width: '99%' , height: '200px' , backgroundColor: '#3e8f3e'}}>
+            <div className="header-div" style={{width: '99%' , height: '200px' , backgroundImage:"url(../images/tu1.jpg)"}}>
                 <p>分布式可再生能源 version 1.0</p>
             </div>
         );
