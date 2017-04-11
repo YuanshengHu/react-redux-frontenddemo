@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        table.mytable tr {height: 40px}
+    </style>
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/jquery.dataTables.min.css" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">分布式能源综合系统导航</a>
+        </div>
+        <div>
+            <ul class="nav navbar-nav">
+                <li><a href="./load_plan_buy.html">公布负荷认购信息</a></li>
+                <li><a href="#">中标电量公示</a></li>
+                <li><a href="./generator_winner_detail.html">中标电量细节</a></li>
+                <li><a href="./energy_resume_feedback.html">能源消耗反馈</a></li>
+                <li><a href="./buy_and_pay.html">认购缴清信息</a></li>
+                <li class="active"><a href="#">主动送电管理</a></li>
+            </ul>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="#"><span class="glyphicon glyphicon-user"></span> 胡元晟</a></li>
+            <li><a href="./login.html"><span class="glyphicon glyphicon-log-in"></span> 登出</a></li>
+        </ul>
+    </div>
+</nav>
+<div class="header-div" style="width:99%; height:200px;background-image:url(../images/tu1.jpg)">
+    <p>分布式可再生能源 version 1.0</p>
+</div>
+<div id="cloud" style="float: left; width: 50%;padding-left: 10%;padding-top: 10%">
+    <canvas width="400" height="400" id="myCanvas">
+        <p>Anything in here will be replaced on browsers that support the canvas element</p>
+        <ul class="weighted" style="font-size: 30%" id="weightTags">
+            <li><a href='#' data-weight=22>LD1</a></li>
+            <li><a href='#' data-weight=22>LD2</a></li>
+            <li><a href='#' data-weight=22>LD3</a></li>
+            <li><a href='#' data-weight=22>LD4</a></li>
+            <li><a href='#' data-weight=22>LD5</a></li>
+            <li><a href='#' data-weight=30>LD6</a></li>
+            <li><a href='#' data-weight=22>LD7</a></li>
+            <li><a href='#' data-weight=22>LD8</a></li>
+            <li><a href='#' data-weight=22>LD9</a></li>
+            <li><a href='#' data-weight=22>LD10</a></li>
+            <li><a href='#' data-weight=22>LD11</a></li>
+            <li><a href='#' data-weight=22>LD12</a></li>
+            <li><a href='#' data-weight=22>LD13</a></li>
+            <li><a href='#' data-weight=22>LD14</a></li>
+            <li><a href='#' data-weight=22>LD15</a></li>
+            <li><a href='#' data-weight=22>LD15</a></li>
+            <li><a href='#' data-weight=22>LD4</a></li>
+            <li><a href='#' data-weight=22>LD5</a></li>
+            <li><a href='#' data-weight=30>LD6</a></li>
+            <li><a href='#' data-weight=22>LD7</a></li>
+            <li><a href='#' data-weight=22>LD8</a></li>
+            <li><a href='#' data-weight=22>LD9</a></li>
+            <li><a href='#' data-weight=22>LD10</a></li>
+            <li><a href='#' data-weight=22>LD11</a></li>
+        </ul>
+    </canvas>
+</div>
+<div id="cloud2" style="float: left; width: 50%;padding-left: 10%;padding-top: 10%">
+    <canvas width="400" height="400" id="myCanvas2">
+        <p>Anything in here will be replaced on browsers that support the canvas element</p>
+        <ul class="weighted" style="font-size: 30%" id="weightTags2">
+            <li><a href='#' data-weight=22>USER1</a></li>
+            <li><a href='#' data-weight=22>USER2</a></li>
+            <li><a href='#' data-weight=22>USER3</a></li>
+            <li><a href='#' data-weight=22>USER4</a></li>
+            <li><a href='#' data-weight=22>USER5</a></li>
+            <li><a href='#' data-weight=30>USER6</a></li>
+            <li><a href='#' data-weight=22>USER7</a></li>
+            <li><a href='#' data-weight=22>USER8</a></li>
+            <li><a href='#' data-weight=22>USER9</a></li>
+            <li><a href='#' data-weight=22>USER10</a></li>
+            <li><a href='#' data-weight=22>USER11</a></li>
+            <li><a href='#' data-weight=22>USER12</a></li>
+            <li><a href='#' data-weight=22>USER13</a></li>
+            <li><a href='#' data-weight=22>USER14</a></li>
+            <li><a href='#' data-weight=22>USER15</a></li>
+            <li><a href='#' data-weight=22>USER15</a></li>
+            <li><a href='#' data-weight=22>USER4</a></li>
+            <li><a href='#' data-weight=22>USER5</a></li>
+            <li><a href='#' data-weight=30>USER6</a></li>
+            <li><a href='#' data-weight=22>USER7</a></li>
+            <li><a href='#' data-weight=22>USER8</a></li>
+            <li><a href='#' data-weight=22>USER9</a></li>
+            <li><a href='#' data-weight=22>USER10</a></li>
+            <li><a href='#' data-weight=22>USER11</a></li>
+            <li><a href='#' data-weight=22>USER12</a></li>
+        </ul>
+    </canvas>
+</div>
+<div style="float: left;width: 47%;text-align: center;border-right: 1px solid #444;border-top: 1px solid #444">
+    <p style="font-size: x-large;color: #761c19">供电商管理</p>
+    <table id="table1">
+        <thead>
+        <tr>
+            <th>供电商名</th>
+            <th>供电商ID</th>
+            <th>机组容量</th>
+            <th>类型</th>
+            <th>历史发电量</th>
+            <th>历史收益</th>
+        </tr>
+        </thead>
+    </table>
+</div>
+<div style="float: right;width: 47%;text-align: center;border-top: 1px solid #444;border-left: 1px solid #444">
+    <p style="font-size: x-large;color: #985f0d">电力用户管理</p>
+    <table id="table2">
+        <thead>
+        <tr>
+            <th>用户编号</th>
+            <th>总支出</th>
+            <th>总电量</th>
+            <th>光电</th>
+            <th>风电</th>
+            <th>水电</th>
+        </tr>
+        </thead>
+    </table>
+</div>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/jquery.dataTables.min.js"></script>
+<script src='../js/tagcloud.js'></script>
+<script src='../js/cloud.js'></script>
+<script>
+    $('#table1').DataTable();
+    $('#table2').DataTable();
+</script>
+</body>
+</html>
