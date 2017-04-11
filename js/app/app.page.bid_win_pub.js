@@ -1,6 +1,13 @@
 /**
  * Created by huyuansheng on 2017/3/29.
  */
+
+var data_page = {
+    "pv":10,
+    "wp":20,
+    "hp":30,
+    "nr":40
+}
 var Header = React.createClass({
     render: function () {
         return (
@@ -53,8 +60,8 @@ $('#chart1').highcharts({
         name: '能源占比',
         innerSize: '50%',
         data: [
-            ['',   45.0],
-            ['',       55.0],
+            ['',   data_page.pv],
+            ['',   100-data_page.pv],
             {
                 name: '其他',
                 y: 0.7,
@@ -104,8 +111,8 @@ $('#chart2').highcharts({
         name: '能源占比',
         innerSize: '50%',
         data: [
-            ['', 26.8],
-            ['', 73.2],
+            ['', data_page.wp],
+            ['', 100-data_page.wp],
             {
                 name: '其他',
                 y: 0.7,
@@ -155,8 +162,8 @@ $('#chart3').highcharts({
         name: '能源占比',
         innerSize: '50%',
         data: [
-            ['', 12.8],
-            ['', 87.3],
+            ['', data_page.hp],
+            ['', 100-data_page.hp],
             {
                 name: '其他',
                 y: 0.7,
@@ -206,8 +213,8 @@ $('#chart4').highcharts({
         name: '能源占比',
         innerSize: '50%',
         data: [
-            ['',    14.7],
-            ['',     85.3],
+            ['',    data_page.nr],
+            ['',     100-data_page.nr],
             {
                 name: '其他',
                 y: 0.7,
