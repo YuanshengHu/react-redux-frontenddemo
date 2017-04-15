@@ -16,55 +16,68 @@ ReactDOM.render(
     document.getElementById("header")
 );
 
-$(function () {
-    $('#left-up-chart').highcharts({
-        chart: {
-            plotBackgroundColor: null,
-            plotBorderWidth: null,
-            height:200,
-            plotShadow: false
-        },
-        title: {
-            text: '',
-            floating: true
-        },
-        tooltip: {
-            headerFormat: '{series.name}<br>',
-            pointFormat: '{point.name}: <b>{point.percentage:.1f}%</b>'
-        },
-        plotOptions: {
-            pie: {
-                allowPointSelect: true,
-                cursor: 'pointer',
-                dataLabels: {
-                    enabled: true,
-                    format: '{point.percentage:.1f} %</b>',
-                    style: {
-                        color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
-                    },
-                },
-                showInLegend: true
-            }
-        },
-        legend: {
-            align: 'right',
-            layout: 'vertical',
-            verticalAlign: 'middle',
-        },
-        series: [{
-            type: 'pie',
-            name: '实时能源渗透率占比',
-            data: [
-                ['风电',   40.0],
-                ['水电',       20.0],
-                ['光伏',    15],
-                ['太阳能',     25]
-            ]
-        }]
-    });
-});
+var data_page = {
+    "real_time": {"fd":40,"sd":20,"gf":25,"bk":15},
+    "energy_str": {"fd":40,"sd":20,"gf":25,"bk":15},
+    "cumulative_effi":{"fd":5,"sd":2,"gf":3,"bk":7,"k":6,"data1":24,"data2":24,"data3":24},
+    "pre_effi":{"fd":5,"sd":2,"gf":3,"bk":7,"k":7,"data1":23,"data2":23,"data3":23}
+};
 
-$('#left-down-chart').highcharts({
+var left_up_chart = {
+    chart: {
+        plotBackgroundColor: null,
+        plotBorderWidth: null,
+        height:200,
+        plotShadow: false
+    },
+    title: {
+        text: '',
+        floating: true
+    },
+    tooltip: {
+        headerFormat: '{series.name}<br>',
+        pointFormat: '{point.name}: <b>{point.percentage:.1f}%</b>'
+    },
+    plotOptions: {
+        pie: {
+            allowPointSelect: true,
+            cursor: 'pointer',
+            dataLabels: {
+                enabled: true,
+                format: '{point.percentage:.1f} %</b>',
+                style: {
+                    color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                },
+            },
+            showInLegend: true
+        }
+    },
+    legend: {
+        align: 'right',
+        layout: 'vertical',
+        verticalAlign: 'middle',
+    },
+    series: [{
+        type: 'pie',
+        name: '实时能源渗透率占比',
+        data: [
+            ['风电',   40.0],
+            ['水电',       20.0],
+            ['光伏',    15],
+            ['不可再生',     25]
+        ]
+    }]
+};
+function changeFunction1(pre,mod){
+    pre.series[0].data= [
+            ['风电',   mod.fd],
+            ['水电',   mod.sd],
+            ['光伏',   mod.gf],
+            ['不可再生',  mod.bk]
+        ]
+}
+
+var left_down_chart = {
     chart: {
         plotBackgroundColor: null,
         plotBorderWidth: null,
@@ -107,12 +120,20 @@ $('#left-down-chart').highcharts({
             ['风电',   40.0],
             ['水电',       20.0],
             ['光伏',    15],
-            ['太阳能',     25]
+            ['不可再生',     25]
         ]
     }]
-})
+};
+function changeFunction2(pre,mod){
+    pre.series[0].data= [
+        ['风电',   mod.fd],
+        ['水电',   mod.sd],
+        ['光伏',   mod.gf],
+        ['不可再生',  mod.bk]
+    ]
+}
 
-$('#right-up-chart21').highcharts({
+var right_up_chart21 = {
     chart: {
         type: 'column'
     },
@@ -168,9 +189,21 @@ $('#right-up-chart21').highcharts({
         name: '光伏',
         data: [3]
     }]
-});
+};
+function changeFunction3(pre,mod){
+    pre.series = [{
+        name: '风电',
+        data: [mod.fd]
+    }, {
+        name: '水电',
+        data: [mod.sd]
+    }, {
+        name: '光伏',
+        data: [mod.gf]
+    }]
+}
 
-$('#right-up-chart22').highcharts({
+var right_up_chart22 = {
     chart: {
         type: 'column'
     },
@@ -225,10 +258,18 @@ $('#right-up-chart22').highcharts({
         name: '不可再生能源',
         data: [4]
     }]
-});
+};
+function changeFunction4(pre,mod){
+    pre.series = [{
+        name: '可再生能源',
+        data: [mod.k]
+    }, {
+        name: '不可再生能源',
+        data: [mod.bk]
+    }]
+}
 
-
-$('#right-down-chart21').highcharts({
+var right_down_chart21 = {
     chart: {
         type: 'column'
     },
@@ -286,9 +327,21 @@ $('#right-down-chart21').highcharts({
         name: '光伏',
         data: [2]
     }]
-});
+};
+function changeFunction5(pre,mod){
+    pre.series = [{
+        name: '风电',
+        data: [mod.fd]
+    }, {
+        name: '水电',
+        data: [mod.sd]
+    }, {
+        name: '光伏',
+        data: [mod.gf]
+    }]
+}
 
-$('#right-down-chart22').highcharts({
+var right_down_chart22 = {
     chart: {
         type: 'column'
     },
@@ -343,4 +396,123 @@ $('#right-down-chart22').highcharts({
         name: '不可再生能源',
         data: [4]
     }]
-});
+};
+function changeFunction6(pre,mod){
+    pre.series = [{
+        name: '可再生能源',
+        data: [mod.k]
+    }, {
+        name: '不可再生能源',
+        data: [mod.bk]
+    }]
+}
+/**
+ * begin the redux connect
+ */
+
+const initialState = data_page;
+const CHANGE_STORE = "CHANGE_STORE";
+function fetcher(state = initialState, action = []) {
+    switch (action.type) {
+        case CHANGE_STORE:
+            return Object.assign({},state,action.json)
+        default :
+            return state
+    }
+};
+var ReduxThunk = window.ReduxThunk.default;
+let store = Redux.createStore(
+    fetcher,
+    Redux.applyMiddleware(ReduxThunk)
+);
+function changestore(json){
+    return {type:CHANGE_STORE,json};
+}
+function fetchGet(){
+    return function(dispatch){
+        return fetch("../json/feedback.json")
+        .then(response => response.json())
+        .then(json=>
+            dispatch(changestore(json))
+        )
+    }
+}
+function select1(state){
+    return {
+        item:state.real_time
+    }
+}
+function select2(state){
+    return {
+        item:state.energy_str
+    }
+}
+function select3(state){
+    return {
+        item:state.cumulative_effi
+    }
+}
+function select4(state){
+    return {
+        item:state.pre_effi
+    }
+}
+TimeClicker = ReactRedux.connect()(TimeClicker);
+var MyHighChart1 = MyHighChart;
+var MyHighChart2 = MyHighChart;
+var MyHighChart3 = MyHighChart;
+var MyHighChart4 = MyHighChart;
+var MyHighChart5 = MyHighChart;
+var MyHighChart6 = MyHighChart;
+MyHighChart1 = ReactRedux.connect(select1)(MyHighChart1);
+MyHighChart2 = ReactRedux.connect(select2)(MyHighChart2);
+MyHighChart3 = ReactRedux.connect(select3)(MyHighChart3);
+MyHighChart4 = ReactRedux.connect(select3)(MyHighChart4);
+MyHighChart5 = ReactRedux.connect(select4)(MyHighChart5);
+MyHighChart6 = ReactRedux.connect(select4)(MyHighChart6);
+
+/**
+ * begin the render
+ */
+ReactDOM.render(
+    <ReactRedux.Provider store={store}>
+        <MyHighChart1 container= 'left-up-chart' options= {left_up_chart} change={changeFunction1}/>
+    </ReactRedux.Provider>,
+    document.getElementById('left-up-chart')
+)
+ReactDOM.render(
+    <ReactRedux.Provider store={store}>
+        <MyHighChart2 container= 'left-down-chart' options= {left_down_chart} change={changeFunction2}/>
+    </ReactRedux.Provider>,
+    document.getElementById('left-down-chart')
+)
+ReactDOM.render(
+    <ReactRedux.Provider store={store}>
+        <MyHighChart3 container= 'right-up-chart21' options= {right_up_chart21} change={changeFunction3}/>
+    </ReactRedux.Provider>,
+    document.getElementById('right-up-chart21')
+)
+ReactDOM.render(
+    <ReactRedux.Provider store={store}>
+        <MyHighChart4 container= 'right-up-chart22' options= {right_up_chart22} change={changeFunction4}/>
+    </ReactRedux.Provider>,
+    document.getElementById('right-up-chart22')
+)
+ReactDOM.render(
+    <ReactRedux.Provider store={store}>
+        <MyHighChart5 container= 'right-down-chart21' options= {right_down_chart21} change={changeFunction5}/>
+    </ReactRedux.Provider>,
+    document.getElementById('right-down-chart21')
+)
+ReactDOM.render(
+    <ReactRedux.Provider store={store}>
+        <MyHighChart6 container= 'right-down-chart22' options= {right_down_chart22} change={changeFunction6}/>
+    </ReactRedux.Provider>,
+    document.getElementById('right-down-chart22')
+)
+ReactDOM.render(
+    <ReactRedux.Provider store={store}>
+        <TimeClicker/>
+    </ReactRedux.Provider>,
+    document.getElementById('time-clicker')
+)

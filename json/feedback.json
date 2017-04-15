@@ -1,0 +1,6 @@
+{
+  "real_time": {"fd":40,"sd":20,"gf":25,"bk":15},
+  "energy_str": {"fd":40,"sd":20,"gf":25,"bk":15},
+  "cumulative_effi":{"fd":5,"sd":2,"gf":3,"bk":7,"k":6,"data1":22,"data2":22,"data3":22},
+  "pre_effi":{"fd":5,"sd":2,"gf":3,"bk":7,"k":6,"data1":23,"data2":23,"data3":23}
+}
