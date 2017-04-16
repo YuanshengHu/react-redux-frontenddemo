@@ -1,7 +1,7 @@
 var MyHighChart = React.createClass({
     componentDidMount: function () {
         var changedOptions = this.props.options;
-        this.props.change(changedOptions,this.props.item);
+        if(this.props.change)this.props.change(changedOptions,this.props.item);
         if (this.props.modules) {
             this.props.modules.forEach(function (module) {
                 module(Highcharts);
@@ -17,7 +17,7 @@ var MyHighChart = React.createClass({
     },
     render: function () {
         var changedOptions = this.props.options;
-        this.props.change(changedOptions,this.props.item);
+        if(this.props.change)this.props.change(changedOptions,this.props.item);
         if (this.props.modules) {
             this.props.modules.forEach(function (module) {
                 module(Highcharts);
