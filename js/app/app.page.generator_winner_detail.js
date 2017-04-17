@@ -147,6 +147,10 @@ var App = React.createClass({
                     }
                 }]
             },
+            id:"",
+            name:"",
+            type:"",
+            power:""
         }
     },
     componentWillMount: function() {
@@ -186,6 +190,10 @@ var App = React.createClass({
                         }
                     }
                 }]}))});
+                this.setState({id:json.id});
+                this.setState({name:json.name});
+                this.setState({type:json.type});
+                this.setState({power:json.power});
             })
     },
     render: function() {
@@ -197,10 +205,10 @@ var App = React.createClass({
                 </div>
                 <div style={{height: '400px', width: '45%', float: 'right'}} id="area2">
                     <div style={{margin: '0 auto', width: '15%',paddingTop: '10%'}}><p style={{fontSize: 'x-large', color: '#1b6d85'}}>运营商</p></div>
-                    <div style={{textAlign: 'center'}}><p style={{fontSize: 'x-large', color: "#761c19"}}>2361975610</p></div>
+                    <div style={{textAlign: 'center'}}><p style={{fontSize: 'x-large', color: "#761c19"}}>{this.state.id}</p></div>
                     <div className="panel panel-default" style={{margin: '0 auto', width:'35%', height: "30%"}}>
                         <div className="panel-body" style={{textAlign: "center"}}>
-                            大唐火电集团<br/>能源类型：风电<br/>装机总容量：234千瓦
+                            {this.state.name}<br/>能源类型：{this.state.type}<br/>装机总容量：{this.state.power}千瓦
                         </div>
                     </div>
                 </div>
