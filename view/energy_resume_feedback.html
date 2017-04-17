@@ -4,10 +4,21 @@
     <meta charset="UTF-8">
     <title></title>
     <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <style type="text/css">
+        footer {
+            text-align: center;
+            background-color: #3D3D3D;
+            font-size: 11px;
+            padding: 40px;
+        }
+        footer .copyright {
+            text-align: center;
+            color: #EDEDED;
+        }
+    </style>
     <link href="../css/jquery.dataTables.min.css" rel="stylesheet">
     <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport" />
 </head>
-<>
 <nav class="navbar navbar-default" role="navigation">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -17,10 +28,10 @@
             <ul class="nav navbar-nav">
                 <li><a href="./load_plan_buy.html">公布负荷认购信息</a></li>
                 <li><a href="./bid_win_pub.html">中标电量公示</a></li>
-                <li><a href="./generator_winner_detail.html">中标电量细节</a></li>
                 <li class="active"><a href="#">能源消耗反馈</a></li>
                 <li><a href="./buy_and_pay.html">认购缴清信息</a></li>
                 <li><a href="./manage.html">主动送电管理</a></li>
+                <li><a href="./about.html">关于使用</a></li>
             </ul>
         </div>
         <ul class="nav navbar-nav navbar-right">
@@ -29,9 +40,29 @@
         </ul>
     </div>
 </nav>
-<div id="header">
-
+<div id="myCarousel" class="carousel slide" style="width: 90%;margin: 0 auto" data-ride="carousel">
+    <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner">
+        <div class="item active" style="background-image:url(../images/lunbo1.jpg);width:100%;height: 200px;background-size: cover;text-align: center;line-height: 200px">
+            <p style="font-size: xx-large;color: #b80b17">分布式可再生能源 version 1.0</p>
+        </div>
+        <div class="item" style="background-image:url(../images/lunbo2.png);width:100%;height: 200px;background-size: cover;text-align: center;line-height: 200px">
+            <p style="font-size: xx-large;color: #b80b17">能源类型-风电、小水电、光伏</p>
+        </div>
+        <div class="item" style="background-image:url(../images/lunbo3.png);width:100%;height: 200px;background-size: cover;text-align: center;line-height: 200px">
+            <p style="font-size: xx-large;color: #b80b17">包含电力交易过程与可再生能源消纳展示</p>
+        </div>
+    </div>
+    <a class="carousel-control left" href="#myCarousel"
+       data-slide="prev"><span class="icon-prev"></span></a>
+    <a class="carousel-control right" href="#myCarousel"
+       data-slide="next"><span class="icon-next"></span></a>
 </div>
+<hr/>
 <div id="upchart">
     <div style="height: 400px; width: 50%; float: left" id="area1">
         <div style="height: 87%; width: 75%; margin: 0 auto; padding-top: 12%">
@@ -56,15 +87,15 @@
                         <table style="height: 100%">
                             <tr>
                                 <td style="width: 40%">碳排减量：</td>
-                                <td><input type="text" value="" style="width: 80%"/>kg</td>
+                                <td><input type="text" value="" style="width: 80%" id="data11"/>kg</td>
                             </tr>
                             <tr>
                                 <td style="width: 40%">碳排减率：</td>
-                                <td><input type="text" value="" style="width: 80%"/></td>
+                                <td><input type="text" value="" style="width: 80%" id="data12"/></td>
                             </tr>
                             <tr>
                                 <td style="width: 40%">新能源消纳：</td>
-                                <td><input type="text" value="" style="width: 80%"/></td>
+                                <td><input type="text" value="" style="width: 80%" id="data13"/></td>
                             </tr>
                         </table>
                     </div>
@@ -99,15 +130,15 @@
                         <table style="height: 100%">
                             <tr>
                                 <td style="width: 40%">碳排减量：</td>
-                                <td><input type="text" value="" style="width: 80%"/>kg</td>
+                                <td><input type="text" value="" style="width: 80%" id="data21"/>kg</td>
                             </tr>
                             <tr>
                                 <td style="width: 40%">碳排减率：</td>
-                                <td><input type="text" value="" style="width: 80%"/></td>
+                                <td><input type="text" value="" style="width: 80%" id="data22"/></td>
                             </tr>
                             <tr>
                                 <td style="width: 40%">新能源消纳：</td>
-                                <td><input type="text" value="" style="width: 80%"/></td>
+                                <td><input type="text" value="" style="width: 80%" id="data23"/></td>
                             </tr>
                         </table>
                     </div>
@@ -119,6 +150,16 @@
     </div>
 </div>
 <div class="panel" id="time-clicker" style="clear: both; width: 30%;height: 80px;line-height:80px;padding-left:7%;background-color: #a9c7da;margin-left: 7%"></div>
+<hr/>
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <p class="copyright">Copyright &copy; 2017 上海交通大学电气工程系</p>
+            </div>
+        </div>
+    </div>
+</footer>
 </body>
 <script src="../js/jquery.min.js"></script>
 <script src="../js/jquery.dataTables.min.js"></script>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        table.mytable tr {height: 40px}
+        footer {
+            text-align: center;
+            background-color: #3D3D3D;
+            font-size: 11px;
+            padding: 40px;
+        }
+        footer .copyright {
+            text-align: center;
+            color: #EDEDED;
+        }
+    </style>
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/jquery.dataTables.min.css" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">分布式能源综合系统导航</a>
+        </div>
+        <div>
+            <ul class="nav navbar-nav">
+                <li><a href="./load_plan_buy.html">公布负荷认购信息</a></li>
+                <li><a href="#">中标电量公示</a></li>
+                <li><a href="./energy_resume_feedback.html">能源消耗反馈</a></li>
+                <li><a href="./buy_and_pay.html">认购缴清信息</a></li>
+                <li><a href="./manage.html">主动送电管理</a></li>
+                <li class="active"><a href="#">关于使用</a></li>
+            </ul>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="#"><span class="glyphicon glyphicon-user"></span> 胡元晟</a></li>
+            <li><a href="./login.html"><span class="glyphicon glyphicon-log-in"></span> 登出</a></li>
+        </ul>
+    </div>
+</nav>
+<div id="myCarousel" class="carousel slide" style="width: 90%;margin: 0 auto" data-ride="carousel">
+    <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner">
+        <div class="item active" style="background-image:url(../images/lunbo1.jpg);width:100%;height: 200px;background-size: cover;text-align: center;line-height: 200px">
+            <p style="font-size: xx-large;color: #b80b17">分布式可再生能源 version 1.0</p>
+        </div>
+        <div class="item" style="background-image:url(../images/lunbo2.png);width:100%;height: 200px;background-size: cover;text-align: center;line-height: 200px">
+            <p style="font-size: xx-large;color: #b80b17">能源类型-风电、小水电、光伏</p>
+        </div>
+        <div class="item" style="background-image:url(../images/lunbo3.png);width:100%;height: 200px;background-size: cover;text-align: center;line-height: 200px">
+            <p style="font-size: xx-large;color: #b80b17">包含电力交易过程与可再生能源消纳展示</p>
+        </div>
+    </div>
+    <a class="carousel-control left" href="#myCarousel"
+       data-slide="prev"><span class="icon-prev"></span></a>
+    <a class="carousel-control right" href="#myCarousel"
+       data-slide="next"><span class="icon-next"></span></a>
+</div>
+<hr/>
+<!--this is just try-->
+<div id="contact-introduction" class="heading">
+    <div class="container content">
+        <h1>使用方法</h1>
+        <p class="lead">公布负荷认购信息：</p>
+        <p>网页刷新时候显示的曲线是全网全天预测负荷量曲线，下表是不同用户的认购比例，点击曲线下面的展示按钮，上图的曲线会变成对应用户的全天预测负荷量曲线，刷新网页就会重新显示全网的</p>
+        <p class="lead">中标电量公示：</p>
+        <p>扇形图蓝色部分所显示的比例就是对应能源类型的中标占比，下面的蓝色链接是发电商的名字，点击即刻显示具体的中标细节</p>
+        <p class="lead">能源消耗反馈：</p>
+        <p>每隔五分钟系统会自动刷新一次数据，用户也可以手动点击刷新数据</p>
+        <p class="lead">认购缴清信息</p>
+        <p>点击左侧列表中对应的用户名，认购缴清信息就会与对应的用户相对应</p>
+        <p class="lead">主动送电管理</p>
+        <p>左侧云图显示的是所有的电力供应商名称，左侧表格显示的是所有的电力供应商信息，右侧云图显示的是所有的电力用户名称，右侧表格显示的是所有的电力用户信息。</p>
+        <h1>关于我们</h1>
+        <p>由上海交通大学电气工程系刘东教授指导完成       参与同学:张同学,凌同学,胡同学</p>
+        <h1>维护人员联系方式</h1>
+    </div>
+</div>
+
+<hr>
+
+<div class="container">
+    <div class="row" id="social-media">
+        <div class="col-sm-4"></div>
+        <div class="col-sm-1">
+            <a href="https://github.com/YuanshengHu/" target="_blank">
+                <svg width="48px" height="47px" viewBox="0 0 48 47" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <!-- Generator: Sketch 3.7.2 (28276) - http://www.bohemiancoding.com/sketch -->
+                    <title>Github-color</title>
+                    <desc>Created with Sketch.</desc>
+                    <defs></defs>
+                    <g id="Icons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                        <g id="Color-" transform="translate(-700.000000, -560.000000)" fill="#3E75C3">
+                            <path d="M723.9985,560 C710.746,560 700,570.787092 700,584.096644 C700,594.740671 706.876,603.77183 716.4145,606.958412 C717.6145,607.179786 718.0525,606.435849 718.0525,605.797328 C718.0525,605.225068 718.0315,603.710086 718.0195,601.699648 C711.343,603.155898 709.9345,598.469394 709.9345,598.469394 C708.844,595.686405 707.2705,594.94548 707.2705,594.94548 C705.091,593.450075 707.4355,593.480194 707.4355,593.480194 C709.843,593.650366 711.1105,595.963499 711.1105,595.963499 C713.2525,599.645538 716.728,598.58234 718.096,597.964902 C718.3135,596.407754 718.9345,595.346062 719.62,594.743683 C714.2905,594.135281 708.688,592.069123 708.688,582.836167 C708.688,580.205279 709.6225,578.054788 711.1585,576.369634 C710.911,575.759726 710.0875,573.311058 711.3925,569.993458 C711.3925,569.993458 713.4085,569.345902 717.9925,572.46321 C719.908,571.928599 721.96,571.662047 724.0015,571.651505 C726.04,571.662047 728.0935,571.928599 730.0105,572.46321 C734.5915,569.345902 736.603,569.993458 736.603,569.993458 C737.9125,573.311058 737.089,575.759726 736.8415,576.369634 C738.3805,578.054788 739.309,580.205279 739.309,582.836167 C739.309,592.091712 733.6975,594.129257 728.3515,594.725612 C729.2125,595.469549 729.9805,596.939353 729.9805,599.18773 C729.9805,602.408949 729.9505,605.006706 729.9505,605.797328 C729.9505,606.441873 730.3825,607.191834 731.6005,606.9554 C741.13,603.762794 748,594.737659 748,584.096644 C748,570.787092 737.254,560 723.9985,560" id="Github"></path>
+                        </g>
+                    </g>
+                </svg>
+            </a>
+        </div>
+
+        <div class="col-sm-1">
+            <a href="#weChateQRModal" target="_blank" data-toggle="modal">
+                <svg version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" height="48px" viewBox="0 0 300 300" enable-background="new 0 0 300 300" xml:space="preserve">
+              <path fill="#2DC100" d="M300,255c0,24.854-20.147,45-45,45H45c-24.854,0-45-20.146-45-45V45C0,20.147,20.147,0,45,0h210  c24.853,0,45,20.147,45,45V255z"/>
+              <g>
+                  <path fill="#FFFFFF" d="M200.803,111.88c-24.213,1.265-45.268,8.605-62.362,25.188c-17.271,16.754-25.155,37.284-23,62.734 c-9.464-1.172-18.084-2.462-26.753-3.192c-2.994-0.252-6.547,0.106-9.083,1.537c-8.418,4.75-16.488,10.113-26.053,16.092  c1.755-7.938,2.891-14.889,4.902-21.575c1.479-4.914,0.794-7.649-3.733-10.849c-29.066-20.521-41.318-51.232-32.149-82.85 c8.483-29.25,29.315-46.989,57.621-56.236c38.635-12.62,82.054,0.253,105.547,30.927C194.225,84.736,199.428,97.172,200.803,111.88  z M89.366,102.028c0.223-5.783-4.788-10.993-10.74-11.167c-6.094-0.179-11.106,4.478-11.284,10.483 c-0.18,6.086,4.475,10.963,10.613,11.119C84.04,112.617,89.141,107.954,89.366,102.028z M147.507,90.857  c-5.974,0.11-11.022,5.198-10.916,11.004c0.109,6.018,5.061,10.726,11.204,10.652c6.159-0.074,10.83-4.832,10.772-10.977  C158.516,95.504,153.586,90.746,147.507,90.857z"/>
+                  <path fill="#FFFFFF" d="M255.201,262.83c-7.667-3.414-14.7-8.536-22.188-9.318c-7.459-0.779-15.3,3.524-23.104,4.322 c-23.771,2.432-45.067-4.193-62.627-20.432c-33.397-30.89-28.625-78.254,10.014-103.568  c34.341-22.498,84.704-14.998,108.916,16.219c21.129,27.24,18.646,63.4-7.148,86.284c-7.464,6.623-10.15,12.073-5.361,20.804  C254.587,258.753,254.688,260.794,255.201,262.83z M167.927,178.331c4.881,0.005,8.9-3.815,9.085-8.636 c0.195-5.104-3.91-9.385-9.021-9.406c-5.06-0.023-9.299,4.318-9.123,9.346C159.034,174.439,163.081,178.325,167.927,178.331z M224.188,160.309c-4.736-0.033-8.76,3.844-8.953,8.629c-0.205,5.117,3.772,9.319,8.836,9.332c4.898,0.016,8.768-3.688,8.946-8.562  C233.207,164.579,229.228,160.344,224.188,160.309z"/>
+              </g>
+          </svg>
+            </a>
+            <div class="fade modal" id="weChateQRModal">
+                <div class="modal-dialog modal-weChat">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3>WeChat QS Code</h3>
+                        </div>
+                        <div class="modal-body">
+                            <img src="../images/weChatQR.jpg" alt="WeChat QR Code">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-4"></div>
+    </div>
+
+    <hr>
+
+    <div id="email-me">
+        <h3><span class="glyphicon glyphicon-envelope"></span>邮箱</h3>
+            <p class="lead">你可以使用一下几个邮箱联系我们</p>
+            <h3 class="email-address">
+                <a href="mailto:1153402569@qq.com?Subject=Hello 晟哥" target="_top" class="label label-danger">1153402569@qq.com</a>
+            </h3>
+            <h3 class="email-address">
+                <a href="mailto:m15026671602@163.com?Subject=Hello 晟哥" target="_top" class="label label-success">m15026671602@163.com</a>
+            </h3>
+    </div>
+</div>
+<!--this is just try-->
+
+<div style="clear: both"></div>
+<hr/>
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <p class="copyright">Copyright &copy; 2017 上海交通大学电气工程系</p>
+            </div>
+        </div>
+    </div>
+</footer>
+</body>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/jquery.dataTables.min.js"></script>
+</html>

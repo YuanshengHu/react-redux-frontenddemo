@@ -1,21 +1,6 @@
 /**
  * Created by huyuansheng on 2017/3/31.
  */
-var Header = React.createClass({
-    render: function () {
-        return (
-            <div className="header-div" style={{width: '99%' , height: '200px' , backgroundImage:"url(../images/tu1.jpg)"}}>
-                <p>分布式可再生能源 version 1.0</p>
-            </div>
-        );
-    }
-});
-
-ReactDOM.render(
-    <Header/>,
-    document.getElementById("header")
-);
-
 var data_page = {
     "real_time": {"fd":40,"sd":20,"gf":25,"bk":15},
     "energy_str": {"fd":40,"sd":20,"gf":25,"bk":15},
@@ -433,7 +418,15 @@ function fetchGet(){
         return fetch("../json/feedback.json")
         .then(response => response.json())
         .then(json=>
-            dispatch(changestore(json))
+            {
+                dispatch(changestore(json));
+                $('#data21').val(json.pre_effi.data1);
+                $('#data22').val(json.pre_effi.data2);
+                $('#data23').val(json.pre_effi.data3);
+                $('#data11').val(json.cumulative_effi.data1);
+                $('#data12').val(json.cumulative_effi.data2);
+                $('#data13').val(json.cumulative_effi.data3);
+            }
         )
     }
 }

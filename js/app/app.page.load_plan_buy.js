@@ -9,15 +9,6 @@ var data_page = {
         {"id":"LD2", "pt":"31", "hp":"35", "wp":"34"}
     ]
 }
-var Header = React.createClass({
-    render: function () {
-        return (
-          <div className="header-div" style={{width: '99%' , height: '200px' , backgroundImage:"url(../images/tu1.jpg)"}}>
-              <p>分布式可再生能源 version 1.0</p>
-          </div>
-        );
-    }
-});
 
 var CustomerBuyPredict = React.createClass({
     handleClick: function(item){
@@ -132,10 +123,6 @@ let store = Redux.createStore(reduceCurve);
 /*
  this part is the render function of the app
  */
-ReactDOM.render(
-    <Header/>,
-    document.getElementById("header")
-);
 
 ReactDOM.render(
     <ReactRedux.Provider store={store}>

@@ -229,10 +229,10 @@ const router = () => (
                         <ul className="nav navbar-nav">
                             <li><a href="./load_plan_buy.html">公布负荷认购信息</a></li>
                             <li><a href="./bid_win_pub.html">中标电量公示</a></li>
-                            <li className="active"><a href="#">中标电量细节</a></li>
                             <li><a href="./energy_resume_feedback.html">能源消耗反馈</a></li>
                             <li><a href="./buy_and_pay.html">认购缴清信息</a></li>
                             <li><a href="./manage.html">主动送电管理</a></li>
+                            <li><a href="./about.html">关于使用</a></li>
                         </ul>
                     </div>
                     <ul className="nav navbar-nav navbar-right">
@@ -242,11 +242,21 @@ const router = () => (
                 </div>
             </nav>
             <div id="header">
-                <div className="header-div" style={{width: '99%' , height: '200px' , backgroundImage:"url(../images/tu1.jpg)"}}>
-                    <p>分布式可再生能源 version 1.0</p>
+                <div className="header-div" style={{width: '99%' , height: '200px' , backgroundImage:"url(../images/tu1.jpg)",textAlign:'center',lineHeight: '200px'}}>
+                    <p style={{fontSize:'xx-large',color:'#FFFFFF'}}>分布式可再生能源 version 1.0</p>
                 </div>
             </div>
             <Route path="/:id" component={App}/>
+            <hr/>
+            <footer>
+                <div className="container">
+                    <div className="row">
+                        <div className="col-lg-12">
+                            <p className="copyright">Copyright &copy; 2017 上海交通大学电气工程系</p>
+                        </div>
+                    </div>
+                </div>
+            </footer>
         </div>
     </HashRouter>
 )

@@ -8,21 +8,6 @@ var data_page = {
     "hp":30,
     "nr":40
 }
-var Header = React.createClass({
-    render: function () {
-        return (
-            <div className="header-div" style={{width: '99%' , height: '200px' , backgroundImage:"url(../images/tu1.jpg)"}}>
-                <p>分布式可再生能源 version 1.0</p>
-            </div>
-        );
-    }
-});
-
-ReactDOM.render(
-    <Header/>,
-    document.getElementById("header")
-);
-
 $('#chart1').highcharts({
     chart: {
         plotBackgroundColor: null,
